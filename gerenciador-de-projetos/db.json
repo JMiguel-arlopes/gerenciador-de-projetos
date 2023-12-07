@@ -1,0 +1,73 @@
+{
+  "projects": [
+    {
+      "name": "apenas o primeiro teste",
+      "total": "0",
+      "category": {
+        "id": "2",
+        "name": "Desenvolvimento"
+      },
+      "cost": 0,
+      "services": [
+        {
+          "nameService": "12223223",
+          "costService": "0",
+          "descriptionService": "23442",
+          "id": "a5068de3-08c5-4769-b75c-b414ffb9e5fa"
+        }
+      ],
+      "id": 1
+    },
+    {
+      "name": "Turma do CBZ",
+      "total": "12002393002022",
+      "category": {
+        "id": "4",
+        "name": "Planejamento"
+      },
+      "cost": 0,
+      "services": [],
+      "id": 2
+    },
+    {
+      "name": "eu não sei",
+      "total": "2344",
+      "category": {
+        "id": "3",
+        "name": "Design"
+      },
+      "cost": 0,
+      "services": [],
+      "id": 3
+    },
+    {
+      "name": "quinto ",
+      "total": "2344",
+      "category": {
+        "id": "4",
+        "name": "Planejamento"
+      },
+      "cost": 0,
+      "services": [],
+      "id": 5
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "Infra"
+    },
+    {
+      "id": 2,
+      "name": "Desenvolvimento"
+    },
+    {
+      "id": 3,
+      "name": "Design"
+    },
+    {
+      "id": 4,
+      "name": "Planejamento"
+    }
+  ]
+}

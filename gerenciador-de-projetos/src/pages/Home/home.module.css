@@ -1,0 +1,32 @@
+.section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 4em;
+}
+
+.section h1 {
+    font-size: 1.6em;
+    font-weight: 700;
+    margin-bottom: .5em;
+}
+
+.section h1 span {
+    color: #3dff33;
+    text-shadow: -1px 1px #ffbb33;
+    border-radius: 4px;
+    padding: 2px .3em;
+    background-color: #222;
+}
+
+.section p {
+    margin-bottom: 1.5em;
+    color: #7B7B7B;
+}
+
+.section img {
+    max-width: 350px;
+    margin: 2em 0;
+}
