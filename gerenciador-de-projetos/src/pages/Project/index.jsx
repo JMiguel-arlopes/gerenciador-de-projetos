@@ -9,10 +9,11 @@ import styles from './project.module.css'
 import { useEffect, useState } from "react"
 
 import { useParams } from "react-router-dom"
-import { parse, v4 as uuidv4 } from 'uuid'
+import { v4 as uuidv4 } from 'uuid'
 
 export default function Project() {
     const [project, setProject] = useState({})
+    const [services, setServices] = useState([])
     const [showForm, setShowForm] = useState(false)
     const [showServicesForm, setShowServicesForm] = useState(false)
     const [showMessageError, setShowMessageError] = useState(false)
@@ -29,7 +30,7 @@ export default function Project() {
         }).then(resp => resp.json())
         .then(data => {
             setProject(data)
-            // console.log(data)
+            setServices(data.services)
         })
     }, [])
 
@@ -87,7 +88,33 @@ export default function Project() {
             body: JSON.stringify(newProject)
         })
         .then(resp => resp.json())
-        .then(data => console.log(data))
+        .then(() => {
+            setProject(newProject)
+            setShowServicesForm(false)
+        })
+        .catch(err => console.log(err))
+    }
+
+    function removeService(id, cost) {
+        const newServices = project.services.filter(
+            (service) => service.id !== id
+        )
+        
+        const newProject = project
+        newProject.services = newServices
+        newProject.cost = parseFloat(newProject.cost) - parseFloat(cost)
+
+        fetch(`http://localhost:5000/projects/${newProject.id}`, {
+            method: 'PATCH',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(newProject)
+        })
+        .then(resp => resp.json())
+        .then((data) => {
+            // console.log(data)
+            setProject(newProject)
+            setServices(newServices)
+        })
         .catch(err => console.log(err))
     }
 
@@ -163,22 +190,22 @@ export default function Project() {
                         </div>
                         <h2>Serviços:</h2>
                         <Container direction='start'>
-                            {project.services.length > 0 && (
-                                project.services.map(service => {
+                            {services.length > 0 && (
+                                services.map(service => {
                                     return (
                                         <ServiceCard
-
                                             key={service.id}
                                             nameService={service.nameService}
                                             costService={service.costService}
                                             descriptionService={service.descriptionService}
                                             idService={service.id}
+                                            handleRemove={removeService}
                                         />
 
                                     )
                                 })
                             )}
-                            {project.services.length === 0 && <p>Não há serviços</p>}
+                            {services.length === 0 && <p>Não há serviços</p>}
                         </Container>
                     </Container>
                 </div>
